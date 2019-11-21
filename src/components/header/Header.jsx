@@ -1,20 +1,23 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
+import { setProductByName } from '../../redux/actions/ProductsOperations';
+import { logout } from '../../redux/actions/AuthUser';
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import SportsBasketball from "@material-ui/icons/SportsBasketball";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import getProductByName from '../../redux/actions/getProductByName';
-import { logout } from '../../redux/actions/AuthUser';
-import { connect } from "react-redux";
-import "./Header.css";
-import { withRouter } from "react-router-dom";
 import cartImage from "../../images/iconobasket.jpg";
 import Person from "@material-ui/icons/PersonOutline";
 import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+
+import "./Header.css";
 
 
 
@@ -60,7 +63,7 @@ class Header extends React.Component {
               style={{ marginLeft: 20, color: "#F07F01" }}
               variant="contained"
               onClick={() => {
-                this.props.getProductByName(this.state.searchTerm)
+                this.props.setProductByName(this.state.searchTerm)
               }}
             > Buscar</Button>
           </div>
@@ -113,8 +116,6 @@ class Header extends React.Component {
                   <MenuItem
                     onClick={() => {
                       this.props.logout();
-                      //console.log(this.props.token)
-                      //this.forceUpdate("/")
                       this.props.history.push("/");
                       this.setState({ anchorEl: null });
 
@@ -144,7 +145,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  getProductByName: (name) => dispatch(getProductByName(name))
+  setProductByName: (name) => dispatch(setProductByName(name))
 })
 
 

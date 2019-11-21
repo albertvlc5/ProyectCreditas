@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import getProductByCategory from '../../redux/actions/getProductByCategory';
-import getProductByName from '../../redux/actions/getProductByName';
-import getProductByPopular from '../../redux/actions/getProductByPopular';
+import { setProductByCategory,setProductByName,setProductByPopular } from '../../redux/actions/ProductsOperations';
+
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -20,12 +19,13 @@ import AppsIcon from '@material-ui/icons/Apps';
 import Tooltip from "@material-ui/core/Tooltip";
 import AirlineSeatLegroomNormalIcon from '@material-ui/icons/AirlineSeatLegroomNormal';
 import Grade from '@material-ui/icons/Grade';
+
 import './Allitems.css';
 
 class AllItems extends React.Component {
 
     componentDidMount() {
-        //this.props.getProductByPopular()
+        //this.props.setProductByPopular()
     }
 
     render() {
@@ -37,44 +37,44 @@ class AllItems extends React.Component {
                             <IconButton
 
                             onClick={() => {
-                                this.props.getProductByName("");
+                                this.props.setProductByName("");
                             }}
                         > <AppsIcon size="small" />Todos
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.getProductByPopular();
+                                this.props.setProductByPopular();
                             }}
                         > <Grade size="small" />Favoritos
                             </IconButton>
                         <IconButton
 
                             onClick={() => {
-                                this.props.getProductByCategory("zapatillas");
+                                this.props.setProductByCategory("zapatillas");
                             }}
                         >  <AirlineSeatLegroomNormalIcon size="small" />Zapatillas
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.getProductByCategory("camisetas");
+                                this.props.setProductByCategory("camisetas");
                             }}
                         >  <Group size="small" />Camisetas
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.getProductByCategory("chandals");
+                                this.props.setProductByCategory("chandals");
                             }}
                         >  <SportsHandball size="small" />Chandals
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.getProductByCategory("balones");
+                                this.props.setProductByCategory("balones");
                             }}
                         >  <SportsSoccer size="small" />Balones
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.getProductByCategory("raquetas");
+                                this.props.setProductByCategory("raquetas");
                             }}
                         >  <SportsTennis size="small" />Raquetas
                             </IconButton>
@@ -156,9 +156,9 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-    getProductByPopular: () => dispatch(getProductByPopular()),
-    getProductByCategory: (category) => dispatch(getProductByCategory(category)),
-    getProductByName: (name) => dispatch(getProductByName(name))
+    setProductByPopular: () => dispatch(setProductByPopular()),
+    setProductByCategory: (category) => dispatch(setProductByCategory(category)),
+    setProductByName: (name) => dispatch(setProductByName(name))
 })
 
 

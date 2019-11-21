@@ -1,21 +1,4 @@
 import axios from 'axios';
-/*  export const purchase = async (user_id, product_id) =>  {
-    try {
-        return await axios.post(`http://localhost:8080/api/v1/purchase/`, {
-            user: {
-                id: user_id
-            },
-            product: {
-                id: product_id
-            }
-
-        })
-    } catch{
-        console.error("error");
-    }
-
-}  */
-
 
 export const postUser = async (username, password) => {
     try {
@@ -70,14 +53,12 @@ export const dimeuser = (aux) => (dispatch) => {
 }
 
 
-
 export const dimeid = (username, password) => (dispatch) => {
     axios.post(`http://localhost:8080/api/v1/id`, {
         username: username,
         password: password
     })
         .then(res => {
-            //console.log("EH SOY EL RES DE AHORA "+res.data)
             dispatch({
                 type: 'ID',
                 payload: {
@@ -100,7 +81,6 @@ export const purchase = (user_id, product_id) => (dispatch) => {
 
     })
         .then(res => {
-            //console.log("EYYY PINTAME LA RESPUESTA"+res.data)
             dispatch({
                 type: 'POSTPURCHASE',
                 payload: {
@@ -125,6 +105,7 @@ export const dimeultimo = (id) => (dispatch) => {
         })
         .catch(error => { console.log(`Error: ${error}`) });
 }
+
 export const dimecompras = (id) => (dispatch) => {
     axios.get(`http://localhost:8080/api/v1/purchase/getall/${id}`,
     )

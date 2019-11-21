@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
+
+import { setProductById, setRelatedItems, dimecontrol } from '../../redux/actions/ProductsOperations';
+import { purchase } from '../../redux/actions/AuthUser';
+
 import Button from "@material-ui/core/Button";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-//import getProductById from '../../services/Items';
-//import Items from '../../services/Items';
 import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -14,13 +16,8 @@ import CardActions from "@material-ui/core/CardActions";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
-import getProductByCategory from '../../redux/actions/getProductByCategory';
-import setRelatedItems from '../../redux/actions/setRelatedItems';
-import { purchase } from '../../redux/actions/AuthUser';
-import setProductById from '../../redux/actions/setProductById';
-import dimecontrol from '../../redux/actions/dimecontrol';
 
-//import Order from './views/Order/Order';
+
 
 
 class DetailsItem extends React.Component {
@@ -252,7 +249,7 @@ class DetailsItem extends React.Component {
 
 
 const mapStateToProps = state => ({
-    products: state.products.products,
+    //products: state.products.products,
     token: state.token.token,
     id: state.id.id,
     purchase: state.purchase.purchase,
@@ -266,7 +263,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     setRelatedItems: (category, id) => dispatch(setRelatedItems(category, id)),
     purchase: (userid, productid) => dispatch(purchase(userid, productid)),
-    getProductByCategory: (category) => dispatch(getProductByCategory(category)),
+    //getProductByCategory: (category) => dispatch(getProductByCategory(category)),
     //getProductById: (id) => dispatch(getProductById(id)),
     setProductById: (id) => dispatch(setProductById(id)),
     dimecontrol:(aux) => dispatch(dimecontrol(aux))
