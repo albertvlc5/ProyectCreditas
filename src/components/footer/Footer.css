@@ -1,0 +1,13 @@
+.footerItem {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.footerItem:hover {
+    text-decoration: underline;
+    color: #4282ad;
+}
+
+.div {
+    position: "absolute";
+}
