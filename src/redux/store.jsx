@@ -1,4 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
+
 import products from './reducers/products';
 import token from './reducers/token';
 import user from './reducers/user';
@@ -7,15 +11,8 @@ import purchase from './reducers/purchase';
 import relateditems from './reducers/relateditems';
 import lastpurchase from './reducers/lastpurchase';
 import oneproduct from './reducers/oneproduct';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import allpurchases from './reducers/allpurchases';
 import control from './reducers/control';
-
-
-
-import thunk from 'redux-thunk';
-
 
 const reducer = combineReducers({
     products,

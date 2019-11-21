@@ -1,11 +1,14 @@
 import React from "react";
 import { withRouter,Link } from "react-router-dom";
 import { connect } from "react-redux";
+
+import { postUser, dimetoken, dimeuser, dimeid } from '../../redux/actions/AuthUser';
+
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { postUser, dimetoken, dimeuser, dimeid } from '../../redux/actions/AuthUser';
+
 
 class Login extends React.Component {
   state = {
@@ -16,19 +19,7 @@ class Login extends React.Component {
     wrongCred: false,
   };
 
-  // componentDidMount() {
-  //   this.props.dimetoken()
-  //   console.log("Soy antes"+this.props.token + "eh")
-  // }
-
   render() {
-    //const { from } = this.props.history.state || { from: { pathname: "/" } };
-    // if (this.state.redirectToReferrer === true) {
-    //   this.setState({ redirectToReferrer: false })
-    //   this.props.history.push("/");
-
-    // }
-
     return (
 
       <div style={{
@@ -123,13 +114,11 @@ const mapStateToProps = state => ({
   id: state.id.id
 })
 
-
 const mapDispatchToProps = dispatch => ({
   dimetoken: (aux) => dispatch(dimetoken(aux)),
   dimeuser: (aux) => dispatch(dimeuser(aux)),
   dimeid: (password, username) => dispatch(dimeid(password, username))
 })
-
 
 export default withRouter(connect(
   mapStateToProps,

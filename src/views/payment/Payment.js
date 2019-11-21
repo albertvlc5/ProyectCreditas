@@ -63,8 +63,6 @@ class Payment extends React.Component {
                 >
                 5.Giropay 
                 </div>
-                
-
             </div>
         )
     }

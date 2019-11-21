@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import store from './redux/store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
 import { Provider } from 'react-redux';
-import store from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
+
+import './index.css';
 
 const persistor = persistStore(store)
 const storeApp = (

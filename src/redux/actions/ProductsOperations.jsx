@@ -5,7 +5,6 @@ export const setProductByName = (name) => (dispatch) => {
       name:name,
     })
         .then(res => {
-            //console.log("EH SOY EL RES DE AHORA "+res.data)
             dispatch({
                 type: 'ALL_PRODUCTS',
                 payload: {
@@ -19,7 +18,6 @@ export const setProductByName = (name) => (dispatch) => {
 export const setProductByPopular = () => (dispatch) => {
     axios.get(`http://localhost:8080/api/v1/productos/popular/`)
         .then(res => {
-            console.log(res);
             dispatch({
                 type: 'ALL_PRODUCTS',
                 payload: {
@@ -33,7 +31,6 @@ export const setProductByPopular = () => (dispatch) => {
 export const setProductByCategory = (category) => (dispatch) => {
     axios.get(`http://localhost:8080/api/v1/productos/category/${category}`)
         .then(res => {
-            console.log(res);
             dispatch({
                 type: 'ALL_PRODUCTS',
                 payload: {
@@ -47,10 +44,6 @@ export const setProductByCategory = (category) => (dispatch) => {
 export const setProductById = (id) => (dispatch) => {
     return axios.get(`http://localhost:8080/api/v1/productos/details/${id}`,)
         .then(res => {
-           /*  console.log("VOY a pintar el res")
-            console.log(res);
-            console.log("VOY a pintar el res.data")
-            console.log(res.data); */
             dispatch({
                 type: 'ONE_PRODUCT',
                 payload: {

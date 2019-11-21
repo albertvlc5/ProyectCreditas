@@ -3,9 +3,7 @@ import { withRouter } from "react-router-dom";
 import './Delivery.css';
 
 class Delivery extends React.Component {
-    
     render() {
-
         return (
             <div className="Delivery">
                 <div
@@ -17,7 +15,6 @@ class Delivery extends React.Component {
                 >
                 <b> Opciones de envío: </b>
                 </div>
-                
                 <div
                     style={{
                         marginBottom: 20,
@@ -63,8 +60,6 @@ class Delivery extends React.Component {
                 >
                 5.Puntos de recogida
                 </div>
-                
-
             </div>
         )
     }

@@ -11,7 +11,6 @@ class Order extends React.Component {
         this.props.dimeultimo(this.props.id)
     }
     
-
     render() {
 
         return (
@@ -21,7 +20,8 @@ class Order extends React.Component {
                     style={{
                         marginBottom: 20,
                         marginTop: 10,
-                        fontSize: 38
+                        fontSize: 38,
+                        fontFamily:"Arial"
                     }}
                 >
                   Enhorabuena  {this.props.user}
@@ -35,8 +35,8 @@ class Order extends React.Component {
                     }}
                 >
                   Disfruta de su nuevo producto !
-                
                 </div>
+               {/*  <div style={{display: "flex", justifyContent: "center", alignItems: "center", }}> */}
                 <div>
                     {this.props.lastpurchase && this.props.lastpurchase.map((item, key) => (
                         <div key={item.id}>           
@@ -53,9 +53,7 @@ class Order extends React.Component {
                             >
                                 {item.product.name} - 
                             <b>{item.product.price} €   </b>     
-                            </div>
-                            
-                            
+                            </div> 
                             <div
                                 style={{
                                     marginLeft: 50,
@@ -68,17 +66,11 @@ class Order extends React.Component {
                             >
                                 {item.product.description ? item.product.description : <div style={{ color: "gray" }}>No disponible</div>}
                             </div>
-                            
                         </div>
                     ))}
-
                 </div>
-                
-                
-
             </div>
         )
-
     }
 }
 

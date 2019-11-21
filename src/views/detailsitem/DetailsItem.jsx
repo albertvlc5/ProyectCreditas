@@ -25,32 +25,8 @@ class DetailsItem extends React.Component {
     constructor(props) {
         super(props)
         this.id = this.props.match.params.id;
-        //console.log("Recibido el id " +this.props.match.params.id);
-
-        this.state = {
-            item: null,
-            //control: 0,
-            //category: null,
-        };
     }
 
-    componentWillMount() {
-        /* //console.log("Cuando se monta"+ this.id);
-        const Service = new Items();
-        Service.getProductById(this.id)
-            .then(result =>
-                this.setState({ item: result })); */
-
-        /*  this.setState({ item: result }) &&
-         this.setState({category:result.data.category})); */
-        //await this.props.setProductById(this.id).then(this.setState({ control: 1 }) )
-     
-        //this.props.setProductById(this.id)
-
-        //this.props.setRelatedItems("zapatillas", this.id);
-        
-
-    }
     componentDidMount() {
         this.props.setProductById(this.id).then(this.props.dimecontrol(1))
     }
@@ -59,39 +35,21 @@ class DetailsItem extends React.Component {
        // this.props.dimecontrol(0)
     }
 
-
     render() {
-        console.log(this.props.control)
         if (this.props.oneproduct && this.props.control===1) {
             this.props.setRelatedItems(this.props.oneproduct.category,this.id)
             this.props.dimecontrol(0)
-           
         }
-        
-
-        /* if (!this.state.item) {
-            return null;
-        }
-        const item = this.state.item.data; */
-
-
-
-        //*** FILTRO DE TODOS MENOS 1 *****
-
-        /* let result = this.props.products.filter((producto)=> producto.id!==item.id)
-        console.log("resultado nuevo filtro "+this.id+" "+ JSON.stringify(result));
-      */
-
         return (
-            
             <div style={{ padding: 10 }}>
-                {this.props.oneproduct && 
+                {this.props.oneproduct &&
                     <div key={this.props.oneproduct.id}>
-                        <div
+                        <div key={this.props.oneproduct.id}
                             style={{
                                 marginBottom: 20,
                                 marginTop: 10,
-                                fontSize: 24
+                                fontSize: 32,
+                                fontFamily:"Arial"
                             }}
                         >
                             {this.props.oneproduct.name}
@@ -108,7 +66,7 @@ class DetailsItem extends React.Component {
                             >
                                 <div
                                     style={{
-                                        fontSize: 18, marginTop: 10
+                                        fontSize: 18, marginTop: 10, fontFamily:"Arial"
                                     }}>
                                     Precio: {this.props.oneproduct.price} €
                                 </div>
@@ -120,7 +78,7 @@ class DetailsItem extends React.Component {
                                 <TextField
                                     type="number"
                                     value={1}
-                                    style={{ marginTop: 20, marginBottom: 20, width: 50 }}
+                                    style={{ marginTop: 20, marginBottom: 20, width: 50, fontFamily:"Arial" }}
                                     label="Cantidad"
                                 />
                                 <Button
@@ -131,11 +89,10 @@ class DetailsItem extends React.Component {
                                         if (this.props.token === "") {
                                             this.props.history.push("/login/")
                                         } else {
-                                            await this.props.purchase(this.props.id, this.id)
+                                            await this.props.purchase(this.props.id, this.props.oneproduct.id)
                                             this.props.history.push("/order/");
                                         }
                                     }
-
                                     }
                                 >
                                     Comprar <AddShoppingCartIcon style={{ marginLeft: 5 }} />
@@ -147,7 +104,8 @@ class DetailsItem extends React.Component {
                             style={{
                                 marginTop: 30,
                                 marginBottom: 20,
-                                fontSize: 24.
+                                fontSize: 24,
+                                fontFamily:"Arial"
                             }}
                         >Descripción del producto:
                         </div>
@@ -157,27 +115,26 @@ class DetailsItem extends React.Component {
                                 maxHeight: 200,
                                 fontSize: 13,
                                 overflow: "auto",
-                                textAlign: "justify"
+                                textAlign: "justify",
+                                fontFamily:"Arial"
                             }}
                         >
                             {this.props.oneproduct.description ? this.props.oneproduct.description : <div style={{ color: "gray" }}>No disponible</div>}
                         </div> 
                     </div>
                 } 
-                    
-                
                 {/* Relateditems */}
                 <div
                     style={{
                         marginTop: 30,
                         marginBottom: 10,
-                        fontSize: 24
+                        fontSize: 24,
+                        fontFamily:"Arial"
                     }}
 
                 >
                     Productos similares:
                 </div>
-
                 <div>
                     {this.props.relateditems && this.props.relateditems.slice(0, 3).map((item, key) => (
 
@@ -244,12 +201,7 @@ class DetailsItem extends React.Component {
     }
 }
 
-
-
-
-
 const mapStateToProps = state => ({
-    //products: state.products.products,
     token: state.token.token,
     id: state.id.id,
     purchase: state.purchase.purchase,
@@ -259,16 +211,12 @@ const mapStateToProps = state => ({
 
 })
 
-
 const mapDispatchToProps = dispatch => ({
     setRelatedItems: (category, id) => dispatch(setRelatedItems(category, id)),
     purchase: (userid, productid) => dispatch(purchase(userid, productid)),
-    //getProductByCategory: (category) => dispatch(getProductByCategory(category)),
-    //getProductById: (id) => dispatch(getProductById(id)),
     setProductById: (id) => dispatch(setProductById(id)),
     dimecontrol:(aux) => dispatch(dimecontrol(aux))
 })
-
 
 export default withRouter(connect(
     mapStateToProps,

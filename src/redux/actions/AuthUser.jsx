@@ -52,7 +52,6 @@ export const dimeuser = (aux) => (dispatch) => {
     })
 }
 
-
 export const dimeid = (username, password) => (dispatch) => {
     axios.post(`http://localhost:8080/api/v1/id`, {
         username: username,
@@ -95,7 +94,6 @@ export const dimeultimo = (id) => (dispatch) => {
     axios.get(`http://localhost:8080/api/v1/purchase/lastpurchase/${id}`,
     )
         .then(res => {
-
             dispatch({
                 type: 'LAST_PURCHASE',
                 payload: {
@@ -110,7 +108,6 @@ export const dimecompras = (id) => (dispatch) => {
     axios.get(`http://localhost:8080/api/v1/purchase/getall/${id}`,
     )
         .then(res => {
-
             dispatch({
                 type: 'ALLPURCHASES',
                 payload: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setProductByCategory,setProductByName,setProductByPopular } from '../../redux/actions/ProductsOperations';
+import { setProductByCategory, setProductByName, setProductByPopular } from '../../redux/actions/ProductsOperations';
 
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -31,7 +31,7 @@ class AllItems extends React.Component {
     render() {
         return (
             <div className='AllItems'>
-                <div style={{ padding: 10, display: "flex", alignItems: "center", backgroundColor: "#FAF5F0" }}>
+                <div style={{ padding: 10, display: "flex", alignItems: "center", backgroundColor: "#FAF5F0", justifyContent: "space-around" }}>
                     <div style={{ fontSize: 24, color: "Black", marginTop: 5 }}>
                         Categorias:
                             <IconButton
@@ -82,6 +82,9 @@ class AllItems extends React.Component {
                     </div>
                 </div>
 
+                {/*    {this.props.products && this.props.products.map((item, key) => (
+                <div key={item.name} style={{justifyContent: "space-around", alignItems: "center"}}>
+                </div> Encapsular todo con div */}
 
                 {this.props.products && this.props.products.map((item, key) => (
 
@@ -139,7 +142,6 @@ class AllItems extends React.Component {
                             </Tooltip>
                         </CardActions>
                     </Card>
-
                 ))}
 
             </div>
@@ -148,19 +150,16 @@ class AllItems extends React.Component {
     }
 }
 
-
 const mapStateToProps = state => ({
     products: state.products.products
 
 })
-
 
 const mapDispatchToProps = dispatch => ({
     setProductByPopular: () => dispatch(setProductByPopular()),
     setProductByCategory: (category) => dispatch(setProductByCategory(category)),
     setProductByName: (name) => dispatch(setProductByName(name))
 })
-
 
 export default connect(
     mapStateToProps,

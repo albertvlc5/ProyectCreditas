@@ -10,14 +10,11 @@ import { postRegister } from '../../redux/actions/AuthUser';
 class Register extends React.Component {
   state = {
     username: "",
-    password: "" ,
-    result: null,  
+    password: "" , 
+    result: null,
+    wrongCred: false, 
   };
-
-
   render() {
-   
-
     return (
 
       <div style={{
@@ -77,13 +74,9 @@ class Register extends React.Component {
                 let result = await postRegister(this.state.username, this.state.password)
                 if (result) {
                   this.props.history.goBack();
-                  /* this.props.dimeuser(this.state.username)
-                  this.props.dimetoken(result.data)
-                  this.props.dimeid(this.state.username, this.state.password) */
-
                 }
                 else {
-                  //this.setState({ wrongCred: true })
+                  this.setState({ wrongCred: true })
                 }
               } catch (error) {
                 //console.log(error)
@@ -94,6 +87,9 @@ class Register extends React.Component {
           >
             Register
           </Button>
+          {this.state.wrongCred && (
+            <div style={{ color: "red" }}>Nombre Usuario Existente !</div>
+          )}
         </div>
       </div>
     );

@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+
+import { dimeultimo, dimecompras } from '../../redux/actions/AuthUser';
+
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import CardMedia from "@material-ui/core/CardMedia";
-import { dimeultimo, dimecompras } from '../../redux/actions/AuthUser';
+
 
 class AllPurchases extends Component {
   componentDidMount() {
@@ -50,11 +53,9 @@ class AllPurchases extends Component {
                 <TableCell>{item.product.price}€</TableCell>
                 <TableCell>1</TableCell>
               </TableRow>
-
             ))}
           </TableBody>
         </Table>
-
         <div
           style={{
             color: "#504F5A",
@@ -65,7 +66,6 @@ class AllPurchases extends Component {
         >
           Gastos totales en pedidos: {totalPrice} €
         </div>
-
       </div>
     );
   }
