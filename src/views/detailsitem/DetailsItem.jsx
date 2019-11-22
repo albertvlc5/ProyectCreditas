@@ -37,8 +37,12 @@ class DetailsItem extends React.Component {
 
     render() {
         if (this.props.oneproduct && this.props.control===1) {
-            this.props.setRelatedItems(this.props.oneproduct.category,this.id)
+            console.log("Estic dins")
+            console.log(this.props.control)
             this.props.dimecontrol(0)
+            this.props.setRelatedItems(this.props.oneproduct.category,this.id) 
+            console.log("Despres")
+            console.log(this.props.control)
         }
         return (
             <div style={{ padding: 10 }}>
