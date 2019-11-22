@@ -8,7 +8,6 @@ import token from './reducers/token';
 import user from './reducers/user';
 import id from './reducers/id';
 import purchase from './reducers/purchase';
-import relateditems from './reducers/relateditems';
 import lastpurchase from './reducers/lastpurchase';
 import oneproduct from './reducers/oneproduct';
 import allpurchases from './reducers/allpurchases';
@@ -22,7 +21,6 @@ const reducer = combineReducers({
     oneproduct,
     purchase,
     lastpurchase,
-    relateditems,
     allpurchases,
     control
     
@@ -31,7 +29,7 @@ const reducer = combineReducers({
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['auth']
+    whitelist: ['token','id']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)

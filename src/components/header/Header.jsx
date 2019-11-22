@@ -64,6 +64,7 @@ class Header extends React.Component {
               variant="contained"
               onClick={() => {
                 this.props.setProductByName(this.state.searchTerm)
+                //this.setState({ searchTerm: "" });
               }}
             > Buscar</Button>
           </div>

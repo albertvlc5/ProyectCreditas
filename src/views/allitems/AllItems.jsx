@@ -8,6 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
@@ -31,7 +32,7 @@ class AllItems extends React.Component {
     render() {
         return (
             <div className='AllItems'>
-                <div style={{ padding: 10, display: "flex", alignItems: "center", backgroundColor: "#FAF5F0", justifyContent: "space-around" }}>
+                <div style={{ padding: 10, display: "flex", alignItems: "center", backgroundColor: "#EDECEA", justifyContent: "space-around" }}>
                     <div style={{ fontSize: 24, color: "Black", marginTop: 5 }}>
                         Categorias:
                             <IconButton
@@ -82,67 +83,68 @@ class AllItems extends React.Component {
                     </div>
                 </div>
 
-                {/*    {this.props.products && this.props.products.map((item, key) => (
-                <div key={item.name} style={{justifyContent: "space-around", alignItems: "center"}}>
-                </div> Encapsular todo con div */}
+                <Grid  container direction="row" justify="center" alignItems="flex-start">
+                    {this.props.products && this.props.products.map((item, key) => (
 
-                {this.props.products && this.props.products.map((item, key) => (
-
-                    <Card key={item.name}
-                        style={{ width: 200, height: 270, margin: 10, display: "inline-block" }}
-                    >
-                        <CardActionArea
-                            onClick={() => {
-                                this.props.history.push("/details/" + item.id);
-                            }}
+                        <Card key={item.name}
+                            style={{ width: 200, height: 270, margin: 10, display: "inline-block" }}
                         >
-                            <CardMedia
-                                style={{ height: 140 }}
-                                image={item.image}
-                            />
-                            <CardContent style={{ height: 50 }}>
-                                <div
-                                    style={{
-                                        marginLeft: 5,
-                                        fontWeight: "bold",
-                                        whiteSpace: "nowrap",
-                                        overflow: "hidden",
-                                        textOverflow: "ellipsis"
-                                    }}
-                                >
-                                    {item.name}
-                                </div>
-                                <div style={{ margin: 5 }}>Precio: {item.price} €</div>
-                                <div style={{ color: "#1a9349", fontWeight: "bold", margin: 5 }}>
-                                    {item.popular === 1 && "Más vendidos"}
-                                </div>
-                            </CardContent>
-                        </CardActionArea>
-                        <CardActions
-                            style={{ display: "flex", alignItems: "center", height: 45 }}
-                        >
-                            <Button
-                                size="small"
-                                style={{ marginRight: 60 }}
+                            <CardActionArea
                                 onClick={() => {
                                     this.props.history.push("/details/" + item.id);
                                 }}
-                            >DETALLES
-                            </Button>
-                            <Tooltip title="Descripción Producto">
-                                <IconButton
+                            >
+                                <CardMedia
+                                    style={{ height: 140 }}
+                                    image={item.image}
+                                />
+                                <CardContent style={{ height: 50 }}>
+                                    <div
+                                        style={{
+                                            marginLeft: 5,
+                                            fontWeight: "bold",
+                                            whiteSpace: "nowrap",
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis"
+                                        }}
+                                    >
+                                        {item.name}
+                                    </div>
+                                    <div style={{ margin: 5 }}>Precio: {item.price} €</div>
+                                    <div style={{ color: "#1a9349", fontWeight: "bold", margin: 5 }}>
+                                        {item.popular === 1 && "Más vendidos"}
+                                    </div>
+                                </CardContent>
+                            </CardActionArea>
+                            <CardActions
+                                style={{ display: "flex", alignItems: "center", height: 45 }}
+                            >
+                                <Button
                                     size="small"
-                                    onClick={e => {
+                                    style={{ marginRight: 60 }}
+                                    onClick={() => {
                                         this.props.history.push("/details/" + item.id);
                                     }}
-                                    color="primary"
-                                >
-                                    <ImageSearchIcon size="small" />
-                                </IconButton>
-                            </Tooltip>
-                        </CardActions>
-                    </Card>
-                ))}
+                                >DETALLES
+                                </Button>
+                                <Tooltip title="Descripción Producto">
+                                    <IconButton
+                                        size="small"
+                                        onClick={e => {
+                                            this.props.history.push("/details/" + item.id);
+                                        }}
+                                        color="primary"
+                                    >
+                                        <ImageSearchIcon size="small" />
+                                    </IconButton>
+                                </Tooltip>
+                            </CardActions>
+                        </Card>
+                    ))}
+
+
+                </Grid>
+
 
             </div>
 

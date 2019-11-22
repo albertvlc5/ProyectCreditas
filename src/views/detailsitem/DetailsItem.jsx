@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
-import { setProductById, setRelatedItems, dimecontrol } from '../../redux/actions/ProductsOperations';
+import { setProductById, setRelatedItems } from '../../redux/actions/ProductsOperations';
 import { purchase } from '../../redux/actions/AuthUser';
 
 import Button from "@material-ui/core/Button";
@@ -28,21 +28,13 @@ class DetailsItem extends React.Component {
     }
 
     componentDidMount() {
-        this.props.setProductById(this.id).then(this.props.dimecontrol(1))
+        this.props.setProductById(this.id)
     }
     
-    componentWillUnmount () {
-       // this.props.dimecontrol(0)
-    }
 
     render() {
-        if (this.props.oneproduct && this.props.control===1) {
-            console.log("Estic dins")
-            console.log(this.props.control)
-            this.props.dimecontrol(0)
+        if (this.props.oneproduct && !this.props.relateditems ) {
             this.props.setRelatedItems(this.props.oneproduct.category,this.id) 
-            console.log("Despres")
-            console.log(this.props.control)
         }
         return (
             <div style={{ padding: 10 }}>
@@ -209,17 +201,14 @@ const mapStateToProps = state => ({
     token: state.token.token,
     id: state.id.id,
     purchase: state.purchase.purchase,
-    relateditems: state.relateditems.relateditems,
+    relateditems: state.oneproduct.relateditems,
     oneproduct:state.oneproduct.oneproduct,
-    control:state.control.control,
-
 })
 
 const mapDispatchToProps = dispatch => ({
     setRelatedItems: (category, id) => dispatch(setRelatedItems(category, id)),
     purchase: (userid, productid) => dispatch(purchase(userid, productid)),
     setProductById: (id) => dispatch(setProductById(id)),
-    dimecontrol:(aux) => dispatch(dimecontrol(aux))
 })
 
 export default withRouter(connect(
