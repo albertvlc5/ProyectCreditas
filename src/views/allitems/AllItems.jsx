@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setProductByCategory, setProductByName, setProductByPopular } from '../../redux/actions/ProductsOperations';
+import { setProductByCategory, setProductByName, setProductByPopular, setAllProducts, dimemetodo } from '../../redux/actions/ProductsOperations';
 
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -21,7 +21,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import AirlineSeatLegroomNormalIcon from '@material-ui/icons/AirlineSeatLegroomNormal';
 import Grade from '@material-ui/icons/Grade';
 
-import './Allitems.css';
+import Paging from "../../components/paging/Paging";
 
 class AllItems extends React.Component {
 
@@ -38,7 +38,8 @@ class AllItems extends React.Component {
                             <IconButton
 
                             onClick={() => {
-                                this.props.setProductByName("");
+                                this.props.setAllProducts()
+                                this.props.dimemetodo("todos")
                             }}
                         > <AppsIcon size="small" />Todos
                             </IconButton>
@@ -51,31 +52,36 @@ class AllItems extends React.Component {
                         <IconButton
 
                             onClick={() => {
-                                this.props.setProductByCategory("zapatillas");
+                                this.props.setProductByCategory("zapatillas")
+                                this.props.dimemetodo("categorias")
                             }}
                         >  <AirlineSeatLegroomNormalIcon size="small" />Zapatillas
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.setProductByCategory("camisetas");
+                                this.props.setProductByCategory("camisetas")
+                                this.props.dimemetodo("categorias")
                             }}
                         >  <Group size="small" />Camisetas
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.setProductByCategory("chandals");
+                                this.props.setProductByCategory("chandals")
+                                this.props.dimemetodo("categorias")
                             }}
                         >  <SportsHandball size="small" />Chandals
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.setProductByCategory("balones");
+                                this.props.setProductByCategory("balones")
+                                this.props.dimemetodo("categorias")
                             }}
                         >  <SportsSoccer size="small" />Balones
                             </IconButton>
                         <IconButton
                             onClick={() => {
-                                this.props.setProductByCategory("raquetas");
+                                this.props.setProductByCategory("raquetas")
+                                this.props.dimemetodo("categorias")
                             }}
                         >  <SportsTennis size="small" />Raquetas
                             </IconButton>
@@ -83,7 +89,7 @@ class AllItems extends React.Component {
                     </div>
                 </div>
 
-                <Grid  container direction="row" justify="center" alignItems="flex-start">
+                <Grid container direction="row" justify="center" alignItems="flex-start">
                     {this.props.products && this.props.products.map((item, key) => (
 
                         <Card key={item.name}
@@ -142,9 +148,21 @@ class AllItems extends React.Component {
                         </Card>
                     ))}
 
-
                 </Grid>
 
+                {this.props.products ?
+
+                    <Paging
+                        itemsPerPage={this.props.itemsPerPage}
+                        page={this.props.page}
+                        consulta={this.props.consulta}
+                        category={this.props.products[0].category}
+                        totalItemsCount={this.props.totalItemsCount}
+                        metodo={this.props.metodo}
+
+                    />
+                    : ""
+                }
 
             </div>
 
@@ -153,14 +171,20 @@ class AllItems extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    products: state.products.products
-
+    products: state.products.products,
+    page: state.products.page,
+    itemsPerPage: state.products.itemsPerPage,
+    totalItemsCount: state.products.totalItemsCount,
+    metodo: state.metodo.metodo,
+    consulta: state.consulta.consulta
 })
 
 const mapDispatchToProps = dispatch => ({
-    setProductByPopular: () => dispatch(setProductByPopular()),
-    setProductByCategory: (category) => dispatch(setProductByCategory(category)),
-    setProductByName: (name) => dispatch(setProductByName(name))
+    setProductByPopular: (page) => dispatch(setProductByPopular(page)),
+    setProductByCategory: (category, page) => dispatch(setProductByCategory(category, page)),
+    setProductByName: (name) => dispatch(setProductByName(name)),
+    setAllProducts: (page) => dispatch(setAllProducts(page)),
+    dimemetodo: (aux) => dispatch(dimemetodo(aux))
 })
 
 export default connect(

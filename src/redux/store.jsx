@@ -11,7 +11,8 @@ import purchase from './reducers/purchase';
 import lastpurchase from './reducers/lastpurchase';
 import oneproduct from './reducers/oneproduct';
 import allpurchases from './reducers/allpurchases';
-import control from './reducers/control';
+import metodo from './reducers/metodo';
+import consulta from './reducers/consulta';
 
 const reducer = combineReducers({
     products,
@@ -22,14 +23,15 @@ const reducer = combineReducers({
     purchase,
     lastpurchase,
     allpurchases,
-    control
-    
+    metodo,
+    consulta
+
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['token','id']
+    whitelist: ['token', 'id']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)

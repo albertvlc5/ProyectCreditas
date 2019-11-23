@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter,Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { postUser, dimetoken, dimeuser, dimeid } from '../../redux/actions/AuthUser';
@@ -99,8 +99,8 @@ class Login extends React.Component {
           {this.state.wrongCred && (
             <div style={{ color: "red" }}>Usuario o contraseña incorrectos</div>
           )}
-        <br></br>
-        <Link to="/register/" style={{color: 'blue'}}>Registrarse</Link>
+          <br></br>
+          <Link to="/register/" style={{ color: 'blue' }}>Registrarse</Link>
 
         </div>
       </div>

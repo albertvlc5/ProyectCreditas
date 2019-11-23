@@ -1,18 +1,17 @@
 const INITIAL_STATE = {
-    control: 0
+    metodo: null,
 }
 
-const control = (state = INITIAL_STATE, action) => {
+const metodo = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'CONTROL':
+        case 'METODO':
             return {
                 ...state,
-                control: action.payload.control,
+                metodo: action.payload.metodo,
             }
-
         default:
             return state;
 
     }
 }
-export default control;
+export default metodo;

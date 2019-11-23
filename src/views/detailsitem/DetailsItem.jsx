@@ -17,9 +17,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 
-
-
-
 class DetailsItem extends React.Component {
 
     constructor(props) {
@@ -30,11 +27,11 @@ class DetailsItem extends React.Component {
     componentDidMount() {
         this.props.setProductById(this.id)
     }
-    
+
 
     render() {
-        if (this.props.oneproduct && !this.props.relateditems ) {
-            this.props.setRelatedItems(this.props.oneproduct.category,this.id) 
+        if (this.props.oneproduct && !this.props.relateditems) {
+            this.props.setRelatedItems(this.props.oneproduct.category, this.props.match.params.id)
         }
         return (
             <div style={{ padding: 10 }}>
@@ -45,24 +42,26 @@ class DetailsItem extends React.Component {
                                 marginBottom: 20,
                                 marginTop: 10,
                                 fontSize: 32,
-                                fontFamily:"Arial"
+                                fontFamily: "Arial",
+                                marginLeft: 50,
                             }}
                         >
                             {this.props.oneproduct.name}
                         </div>
                         <div style={{ display: "flex" }}>
-                            <img src={this.props.oneproduct.image} alt="" width={250} height={250} style={{ borderRadius: "5%", objectFit: "cover" }} />
+                            <img src={this.props.oneproduct.image} alt="" width={250} height={250} style={{ borderRadius: "5%", objectFit: "cover", marginLeft: 50, }} />
                             <div
                                 style={{
                                     flex: 1,
                                     marginLeft: 20,
                                     display: "flex",
-                                    flexDirection: "column"
+                                    flexDirection: "column",
+                                    //marginLeft: 50,
                                 }}
                             >
                                 <div
                                     style={{
-                                        fontSize: 18, marginTop: 10, fontFamily:"Arial"
+                                        fontSize: 18, marginTop: 10, fontFamily: "Arial"
                                     }}>
                                     Precio: {this.props.oneproduct.price} €
                                 </div>
@@ -74,7 +73,7 @@ class DetailsItem extends React.Component {
                                 <TextField
                                     type="number"
                                     value={1}
-                                    style={{ marginTop: 20, marginBottom: 20, width: 50, fontFamily:"Arial" }}
+                                    style={{ marginTop: 20, marginBottom: 20, width: 50, fontFamily: "Arial" }}
                                     label="Cantidad"
                                 />
                                 <Button
@@ -101,31 +100,34 @@ class DetailsItem extends React.Component {
                                 marginTop: 30,
                                 marginBottom: 20,
                                 fontSize: 24,
-                                fontFamily:"Arial"
+                                fontFamily: "Arial",
+                                marginLeft: 50
                             }}
                         >Descripción del producto:
                         </div>
                         <div
                             style={{
-                                marginLeft: 5,
+                                marginLeft: 75,
+                                marginRight: 500,
                                 maxHeight: 200,
                                 fontSize: 13,
                                 overflow: "auto",
                                 textAlign: "justify",
-                                fontFamily:"Arial"
+                                fontFamily: "Arial"
                             }}
                         >
                             {this.props.oneproduct.description ? this.props.oneproduct.description : <div style={{ color: "gray" }}>No disponible</div>}
-                        </div> 
+                        </div>
                     </div>
-                } 
+                }
                 {/* Relateditems */}
                 <div
                     style={{
                         marginTop: 30,
                         marginBottom: 10,
                         fontSize: 24,
-                        fontFamily:"Arial"
+                        fontFamily: "Arial",
+                        marginLeft: 50,
                     }}
 
                 >
@@ -135,10 +137,11 @@ class DetailsItem extends React.Component {
                     {this.props.relateditems && this.props.relateditems.slice(0, 3).map((item, key) => (
 
                         <Card key={item.name}
-                            style={{ width: 200, height: 270, margin: 10, display: "inline-block" }}
+                            style={{ width: 200, height: 270, margin: 10, display: "inline-block", marginLeft: 50 }}
                         >
                             <CardActionArea
                                 onClick={() => {
+                                    this.props.setProductById(item.id)
                                     this.props.history.push("/details/" + item.id);
                                 }}
                             >
@@ -171,6 +174,7 @@ class DetailsItem extends React.Component {
                                     size="small"
                                     style={{ marginRight: 60 }}
                                     onClick={() => {
+                                        this.props.setProductById(item.id)
                                         this.props.history.push("/details/" + item.id);
                                     }}
                                 >DETALLES
@@ -179,6 +183,7 @@ class DetailsItem extends React.Component {
                                     <IconButton
                                         size="small"
                                         onClick={e => {
+                                            this.props.setProductById(item.id)
                                             this.props.history.push("/details/" + item.id);
                                         }}
                                         color="primary"
@@ -202,7 +207,7 @@ const mapStateToProps = state => ({
     id: state.id.id,
     purchase: state.purchase.purchase,
     relateditems: state.oneproduct.relateditems,
-    oneproduct:state.oneproduct.oneproduct,
+    oneproduct: state.oneproduct.oneproduct,
 })
 
 const mapDispatchToProps = dispatch => ({

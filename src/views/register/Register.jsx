@@ -10,9 +10,9 @@ import { postRegister } from '../../redux/actions/AuthUser';
 class Register extends React.Component {
   state = {
     username: "",
-    password: "" , 
+    password: "",
     result: null,
-    wrongCred: false, 
+    wrongCred: false,
   };
   render() {
     return (

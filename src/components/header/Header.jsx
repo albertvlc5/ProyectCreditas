@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { setProductByName } from '../../redux/actions/ProductsOperations';
+import { setProductByName, dimemetodo, dimeconsulta } from '../../redux/actions/ProductsOperations';
 import { logout } from '../../redux/actions/AuthUser';
 
 import AppBar from "@material-ui/core/AppBar";
@@ -64,7 +64,10 @@ class Header extends React.Component {
               variant="contained"
               onClick={() => {
                 this.props.setProductByName(this.state.searchTerm)
-                //this.setState({ searchTerm: "" });
+                this.setState({ searchTerm: "" });
+                this.props.dimemetodo("buscador");
+                this.props.dimeconsulta(this.state.searchTerm)
+
               }}
             > Buscar</Button>
           </div>
@@ -93,6 +96,7 @@ class Header extends React.Component {
                   <Person
                     style={{ backgroundColor: "F07F01" }} />
                 </Avatar>
+                {this.props.user}
                 <Menu
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
@@ -140,13 +144,15 @@ const mapStateToProps = state => ({
   products: state.products.products,
   token: state.token.token,
   user: state.user.user,
-
 })
 
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  setProductByName: (name) => dispatch(setProductByName(name))
+  setProductByName: (name, page) => dispatch(setProductByName(name, page)),
+  dimemetodo: (aux) => dispatch(dimemetodo(aux)),
+  dimeconsulta: (aux) => dispatch(dimeconsulta(aux))
+
 })
 
 

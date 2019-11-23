@@ -26,7 +26,7 @@ class App extends Component {
                 <Route path='/' exact component={AllItems} />
                 <Route path='/details/:id' exact component={DetailsItem} />
                 <Route path='/login/' exact component={Login} />
-                <Route path= '/register/' exact component = {Register} />
+                <Route path='/register/' exact component={Register} />
                 <Route path="/order/" exact component={Order} />
                 <Route path="/allpurchases/" exact component={AllPurchases} />
                 <Route path="/delivery/" exact component={Delivery} />

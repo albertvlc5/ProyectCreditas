@@ -39,15 +39,15 @@ class Order extends React.Component {
                         </div>
 
                 {this.props.lastpurchase && this.props.lastpurchase.map((item, key) => (
-                    <Grid container direction="row" justify="center" alignItems="flex-start" key ={item.id}>
+                    <Grid container direction="row" justify="center" alignItems="flex-start" key={item.id}>
 
-                        <Grid container item  xs={12} direction="row" justify="center" alignItems="flex-start">
+                        <Grid container item xs={12} direction="row" justify="center" alignItems="flex-start">
                             <CardMedia
                                 style={{ height: 250, width: 250 }}
                                 image={item.product.image}
                             />
                         </Grid>
-                    
+
                         <div
                             style={{
                                 marginBottom: 20,
