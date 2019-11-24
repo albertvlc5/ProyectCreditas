@@ -35,57 +35,54 @@ class AllItems extends React.Component {
                 <div style={{ padding: 10, display: "flex", alignItems: "center", backgroundColor: "#EDECEA", justifyContent: "space-around" }}>
                     <div style={{ fontSize: 24, color: "Black", marginTop: 5 }}>
                         Categorias:
-                            <IconButton
-
+                        <IconButton
                             onClick={() => {
                                 this.props.setAllProducts()
                                 this.props.dimemetodo("todos")
                             }}
                         > <AppsIcon size="small" />Todos
-                            </IconButton>
+                        </IconButton>
                         <IconButton
                             onClick={() => {
                                 this.props.setProductByPopular();
                             }}
                         > <Grade size="small" />Favoritos
-                            </IconButton>
+                        </IconButton>
                         <IconButton
-
                             onClick={() => {
                                 this.props.setProductByCategory("zapatillas")
                                 this.props.dimemetodo("categorias")
                             }}
                         >  <AirlineSeatLegroomNormalIcon size="small" />Zapatillas
-                            </IconButton>
+                        </IconButton>
                         <IconButton
                             onClick={() => {
                                 this.props.setProductByCategory("camisetas")
                                 this.props.dimemetodo("categorias")
                             }}
                         >  <Group size="small" />Camisetas
-                            </IconButton>
+                        </IconButton>
                         <IconButton
                             onClick={() => {
                                 this.props.setProductByCategory("chandals")
                                 this.props.dimemetodo("categorias")
                             }}
                         >  <SportsHandball size="small" />Chandals
-                            </IconButton>
+                        </IconButton>
                         <IconButton
                             onClick={() => {
                                 this.props.setProductByCategory("balones")
                                 this.props.dimemetodo("categorias")
                             }}
                         >  <SportsSoccer size="small" />Balones
-                            </IconButton>
+                        </IconButton>
                         <IconButton
                             onClick={() => {
                                 this.props.setProductByCategory("raquetas")
                                 this.props.dimemetodo("categorias")
                             }}
                         >  <SportsTennis size="small" />Raquetas
-                            </IconButton>
-
+                        </IconButton>
                     </div>
                 </div>
 

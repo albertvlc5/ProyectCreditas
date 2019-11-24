@@ -14,12 +14,12 @@ class Login extends React.Component {
   state = {
     username: "",
     password: "",
-    redirectToReferrer: false,
     result: null,
     wrongCred: false,
   };
 
   render() {
+
     return (
 
       <div style={{

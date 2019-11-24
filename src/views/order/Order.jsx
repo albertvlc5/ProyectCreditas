@@ -36,7 +36,7 @@ class Order extends React.Component {
                     }}
                 >
                     Disfruta de su nuevo producto !
-                        </div>
+                </div>
 
                 {this.props.lastpurchase && this.props.lastpurchase.map((item, key) => (
                     <Grid container direction="row" justify="center" alignItems="flex-start" key={item.id}>

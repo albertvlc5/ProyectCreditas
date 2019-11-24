@@ -25,7 +25,7 @@ class AllPurchases extends Component {
 
       <div style={{ padding: 10 }}>
         <div style={{ fontSize: 30, marginTop: 10 }}>
-        Mis pedidos:
+          Mis pedidos:
         </div>
         <Table>
           <TableHead>
@@ -74,8 +74,7 @@ class AllPurchases extends Component {
 const mapStateToProps = state => ({
   lastpurchase: state.lastpurchase.lastpurchase,
   id: state.id.id,
-  allpurchases: state.allpurchases.allpurchases,
-
+  allpurchases: state.allpurchases.allpurchases
 })
 
 const mapDispatchToProps = dispatch => ({

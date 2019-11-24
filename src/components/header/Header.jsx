@@ -84,7 +84,6 @@ class Header extends React.Component {
               >
                 Log in
               </Button>
-
               :
               <div>
                 <Avatar

@@ -28,12 +28,14 @@ class DetailsItem extends React.Component {
         this.props.setProductById(this.id)
     }
 
-
     render() {
+
         if (this.props.oneproduct && !this.props.relateditems) {
-            this.props.setRelatedItems(this.props.oneproduct.category, this.props.match.params.id)
+            this.props.setRelatedItems(this.props.oneproduct.category, this.id)
         }
+
         return (
+
             <div style={{ padding: 10 }}>
                 {this.props.oneproduct &&
                     <div key={this.props.oneproduct.id}>
@@ -43,20 +45,19 @@ class DetailsItem extends React.Component {
                                 marginTop: 10,
                                 fontSize: 32,
                                 fontFamily: "Arial",
-                                marginLeft: 50,
+                                marginLeft: 50
                             }}
                         >
                             {this.props.oneproduct.name}
                         </div>
                         <div style={{ display: "flex" }}>
-                            <img src={this.props.oneproduct.image} alt="" width={250} height={250} style={{ borderRadius: "5%", objectFit: "cover", marginLeft: 50, }} />
+                            <img src={this.props.oneproduct.image} alt="" width={250} height={250} style={{ borderRadius: "5%", objectFit: "cover", marginLeft: 50 }} />
                             <div
                                 style={{
                                     flex: 1,
                                     marginLeft: 20,
                                     display: "flex",
-                                    flexDirection: "column",
-                                    //marginLeft: 50,
+                                    flexDirection: "column"
                                 }}
                             >
                                 <div
@@ -205,7 +206,6 @@ class DetailsItem extends React.Component {
 const mapStateToProps = state => ({
     token: state.token.token,
     id: state.id.id,
-    purchase: state.purchase.purchase,
     relateditems: state.oneproduct.relateditems,
     oneproduct: state.oneproduct.oneproduct,
 })

@@ -96,9 +96,6 @@ class Register extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-})
-
 
 const mapDispatchToProps = dispatch => ({
   postRegister: (password, username) => dispatch(postRegister(password, username))
@@ -106,6 +103,5 @@ const mapDispatchToProps = dispatch => ({
 
 
 export default withRouter(connect(
-  mapStateToProps,
   mapDispatchToProps
 )(Register));
