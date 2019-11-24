@@ -24,8 +24,8 @@ class AllPurchases extends Component {
     return (
 
       <div style={{ padding: 10 }}>
-        <div style={{ fontSize: 24, marginTop: 10 }}>
-          Mis pedidos
+        <div style={{ fontSize: 30, marginTop: 10 }}>
+        Mis pedidos:
         </div>
         <Table>
           <TableHead>
@@ -64,7 +64,7 @@ class AllPurchases extends Component {
             fontSize: 22
           }}
         >
-          Gastos totales en pedidos: {totalPrice} €
+          <b>Gastos totales en pedidos:</b> {totalPrice} € 
         </div>
       </div>
     );
