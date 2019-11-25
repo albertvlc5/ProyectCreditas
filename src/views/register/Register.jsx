@@ -11,6 +11,7 @@ class Register extends React.Component {
   state = {
     username: "",
     password: "",
+    email:"",
     result: null,
     wrongCred: false,
   };
@@ -54,6 +55,13 @@ class Register extends React.Component {
             placeholder="User name"
             onChange={e => {
               this.setState({ username: e.target.value });
+            }}
+          />
+          <TextField
+            value={this.state.email}
+            placeholder="Email"
+            onChange={e => {
+              this.setState({ email: e.target.value });
             }}
           />
           <TextField
